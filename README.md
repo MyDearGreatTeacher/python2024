@@ -11,7 +11,7 @@
   - [python網站開發技術](./python網站開發技術):Streamlit gradio flask
   - 資料科學 ==> https://github.com/MyDearGreatTeacher/uTaipei2019
   - 機器學習 ==> https://github.com/MyDearGreatTeacher/ML202302   + https://github.com/MyDearGreatTeacher/ML2023_ref
-  - 影像辨識
+  - [影像辨識](./Topics/影像處理/)
   - 人工智慧
     - https://github.com/MyDearGreatTeacher/AI_and_security_2020/tree/master
     - https://github.com/MyDearGreatTeacher/AI_2022
