@@ -2,10 +2,16 @@
 - [F2719 一步到位！Python 程式設計 -- 最強入門教科書, 3/e  陳惠貞 旗標科技](https://www.tenlong.com.tw/products/9789863127192?list_name=srh)
 - [HappyPythonDay](https://github.com/MyFirstSecurity2020/SecurityFirst2022)
 
-## GOOGLE MEET
-
-https://meet.google.com/waz-kknk-rek
-
+# 2024程式設計評分
+- 期中考 ==> Python程式設計
+- 期末考
+- 期中平時報告 期末平時報告
+- 報告主題
+  - python網路爬蟲技術
+  - python網站開發技術:Streamlit gradio flask
+  - 資料科學
+  - 機器學習
+  - 影像辨識
 # python學習主題
 # python開發環境
 
