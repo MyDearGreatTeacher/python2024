@@ -18,6 +18,7 @@
     - https://github.com/MyDearGreatTeacher/AIsec2023
     - https://github.com/MyDearGreatTeacher/AI_SEC_202302 
   - 生成式AI
+    - https://github.com/8wingflying/GenAI20240518 
 # python學習主題
 # python開發環境
 
