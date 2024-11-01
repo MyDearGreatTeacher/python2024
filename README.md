@@ -8,7 +8,7 @@
 - 期中平時報告 期末平時報告
 - 報告主題
   - python網路爬蟲技術
-  - python網站開發技術:Streamlit gradio flask
+  - [python網站開發技術](./python網站開發技術):Streamlit gradio flask
   - 資料科學
   - 機器學習
   - 影像辨識
