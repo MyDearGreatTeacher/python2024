@@ -2,7 +2,7 @@
 - [F2719 一步到位！Python 程式設計 -- 最強入門教科書, 3/e  陳惠貞 旗標科技](https://www.tenlong.com.tw/products/9789863127192?list_name=srh)
 - [HappyPythonDay](https://github.com/MyFirstSecurity2020/SecurityFirst2022)
 
-# 2024程式設計評分
+# 2024程式設計評分標準
 - 期中考 ==> Python程式設計
 - 期末考
 - 期中平時報告 期末平時報告
