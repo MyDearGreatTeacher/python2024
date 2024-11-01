@@ -9,9 +9,15 @@
 - 報告主題
   - python網路爬蟲技術
   - [python網站開發技術](./python網站開發技術):Streamlit gradio flask
-  - 資料科學
-  - 機器學習
+  - 資料科學 ==> https://github.com/MyDearGreatTeacher/uTaipei2019
+  - 機器學習 ==> https://github.com/MyDearGreatTeacher/ML202302   + https://github.com/MyDearGreatTeacher/ML2023_ref
   - 影像辨識
+  - 人工智慧
+    - https://github.com/MyDearGreatTeacher/AI_and_security_2020/tree/master
+    - https://github.com/MyDearGreatTeacher/AI_2022
+    - https://github.com/MyDearGreatTeacher/AIsec2023
+    - https://github.com/MyDearGreatTeacher/AI_SEC_202302 
+  - 生成式AI
 # python學習主題
 # python開發環境
 
