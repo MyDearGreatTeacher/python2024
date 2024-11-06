@@ -21,7 +21,6 @@
     - https://github.com/8wingflying/GenAI20240518 
 # python學習主題
 # python開發環境
-
 - 雲端開發環境: 
   - [Google Colab](https://colab.research.google.com/)   
   - kaggle
@@ -29,7 +28,7 @@
   - JupyterHub
 - windwos 開發環境: 
   - 用原始的python [下載點](https://www.python.org/downloads/)
-  - 使用anaconda [下載點](https://www.python.org/downloads/)
+  - 使用anaconda [下載點](https://www.python.org/downloads/)  [anaconda](anaconda.md)
     - conda  [下載點](https://www.anaconda.com/products/distribution)
       - [用conda建立及管理python虛擬環境](https://medium.com/python4u/%E7%94%A8conda%E5%BB%BA%E7%AB%8B%E5%8F%8A%E7%AE%A1%E7%90%86python%E8%99%9B%E6%93%AC%E7%92%B0%E5%A2%83-b61fd2a76566)
   - 使用visual studio code開發python
@@ -43,32 +42,6 @@
   - [Kali2019](https://drive.google.com/file/d/1m620Z7KAOSUOLdFH92FYLE2NINb-vJsn/view?usp=sharing)  root/toor
   - [ubuntu 18.04 LTS](https://drive.google.com/file/d/1aP-qCFP6jKsGYXtKy9ahwZleQSENEi7C/view?usp=sharing)
 
-
-# A.基本主題
-```
-1.基本輸入與輸出 ==>格式化輸出
-2.Python資料型態(data Type)及其各種運算
-[1]數值(Numeric)資料型態及其各種運算
-[2]字串(string)資料型態及其各種運算
-[3]列表(list)資料型態及其各種運算
-[4]字典(dict)資料型態及其各種運算 
-[5]tuple 資料型態及其各種運算 
-[6]集合(set)資料型態及其各種運算
-3.python決策與選擇結構==>
-    if     if..elsif     if..else
-    if..elsif..elsif..else
-4.廻圈(loop)
-[1].使用range 函式 的功能建立整數數列
-[2].使用for 廻圈 執行固定次數的廻圈運算(通常)
-[3].使用while 廻圈執行沒有固定次數的廻圈運算
-(*)[選擇性內容][4].continue 指令與 break 指令
-5.函數(function)
-  函數定義與呼叫
-  python內建函數(builtin functions)
-  使用python內建函數解ASCII code編碼
-  lambda函數
-  (*)[選擇性內容]遞迴函數
-```
 # 進階主題
 ```
 6.模組化程式設計
