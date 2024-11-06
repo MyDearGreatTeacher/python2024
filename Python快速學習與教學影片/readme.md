@@ -47,8 +47,13 @@
       - 遞迴函數
     - python內建函數(builtin functions)
     - 使用python內建函數解ASCII code編碼
-  
-# Python資料科學分析:NUMPY | Matplotlib/seaborn | Pandas
+
+# python網站開發
+# 網路爬蟲
+# python自動化技術
+# 影像辨識
+# 進階課程 ==>  資料科學 | 機器學習 | 人工智慧
+- Python資料科學分析:NUMPY | Matplotlib/seaborn | Pandas
 - Pandas 資料分析實務
   - [程式範例](https://github.com/TaiwanHolyHigh/AI4H2022)
   - YOUTUBE錄影
