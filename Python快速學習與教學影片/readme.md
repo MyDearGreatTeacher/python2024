@@ -48,3 +48,11 @@
     - python內建函數(builtin functions)
     - 使用python內建函數解ASCII code編碼
   
+# Python資料科學分析:NUMPY | Matplotlib/seaborn | Pandas
+- Pandas 資料分析實務
+  - [程式範例](https://github.com/TaiwanHolyHigh/AI4H2022)
+  - YOUTUBE錄影
+    - [pandas 1](https://youtu.be/_lUy7iJXzrI) 
+    - [pandas 2](https://youtu.be/9_r9X7Jsis4) 
+    - [pandas 3](https://youtu.be/TE2fKyxwgDo) 
+    - [pandas 4](https://youtu.be/JEbo_P9h8f8)  
