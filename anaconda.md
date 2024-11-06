@@ -1,7 +1,6 @@
 # anaconda安裝 20241106
 ## D:\anaconda3\condabin>conda list
 ```
-
 # packages in environment at D:\anaconda3:
 #
 # Name                    Version                   Build  Channel
