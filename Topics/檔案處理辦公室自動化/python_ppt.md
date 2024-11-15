@@ -5,7 +5,15 @@
 
 ## 範例
 ```python
+# ch31_1.py
+from pptx import Presentation
 
+# 創建一個新的簡報
+prs = Presentation()
+
+# 列出所有可用的投影片主題樣式
+for index, layout in enumerate(prs.slide_layouts):
+    print(f"Layout {index + 1}: {layout.name}")
 ```
 
 
