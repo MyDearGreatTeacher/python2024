@@ -3,6 +3,10 @@
   - 第31 章 Python 操作PowerPoint 簡報
   - 31-1 認識與安裝python-pptx 模組
 
+# 安裝套件
+
+py -m pip install python-pptx
+
 ## 範例
 ```python
 # ch31_1.py
