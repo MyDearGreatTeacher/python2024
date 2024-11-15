@@ -5,6 +5,8 @@
 - excel 檔案處理
 - pdf檔案處理
 - json 檔案處理
+  - https://www.w3schools.com/python/python_json.asp
+  - https://developer.mozilla.org/zh-TW/docs/Learn/JavaScript/Objects/JSON 
 
 # python office automation
 - [Python + Office：輕松實現 Python 辦公自動化 王國平 電子工業 2021-07-01](https://www.tenlong.com.tw/products/9787121414404?list_name=srh)
