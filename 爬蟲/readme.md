@@ -1,8 +1,11 @@
 # 
 
 
-## [Python3 网络爬虫开发实战]()
-- [GITHUB](https://github.com/Python3WebSpider/Python3WebSpider)
+## 參考資料 
+- [爬蟲在手 資料我有：7堂課學會高效率 Scrapy 爬蟲（iT邦幫忙鐵人賽系列書）| 簡學群](https://www.tenlong.com.tw/products/9789864347438?list_name=rd)
+  - https://github.com/rex-chien/ithome-scrapy/tree/main**** 
+- [Python3 网络爬虫开发实战]()
+  - [GITHUB](https://github.com/Python3WebSpider/Python3WebSpider)
 
 
 ## HTTP 協定
