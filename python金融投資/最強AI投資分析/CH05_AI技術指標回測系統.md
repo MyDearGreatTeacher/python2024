@@ -124,7 +124,6 @@ def get_reply(messages):
 
 # 設定 AI 角色, 使其依據使用者需求進行 df 處理
 def ai_helper(df, user_msg):
-
   msg = [{
     "role":
     "system",
@@ -158,7 +157,6 @@ def ai_helper(df, user_msg):
 
 # 產生技術指標策略
 def ai_strategy(df, user_msg, add_msg="無"):
-
   code_example ='''
 class AiStrategy(Strategy):
   def init(self):
