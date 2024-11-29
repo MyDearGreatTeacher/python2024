@@ -1,0 +1,676 @@
+#
+- 1_Pandas資料結構與基本運算
+- 2_pandas資料匯入與資料清理(Data cleaning)
+- 3_資料處理_連接_合併和重塑
+- 4_資料聚合和分組
+
+
+## 1_pandas的資料結構(Data Structures) ==> series vs DataFrame
+
+### 1_1_series的運算 see [CHAPTER 5 Getting Started with pandas](https://github.com/LearnXu/pydata-notebook/blob/master/Chapter-05/5.1%20Introduction%20to%20pandas%20Data%20Structures%EF%BC%88pandas%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89.ipynb)
+- 建立series
+  - 使用pandas.Series()建立 series
+  - 使用字典資料型態建立pandas.Series() 
+- 搜尋滿足條件的資料
+
+
+#### (1)使用[pandas.Series()](https://pandas.pydata.org/docs/reference/api/pandas.Series.html) 建立Series
+```python
+obj = pd.Series([41, 27, -25, 13,21])
+obj
+```
+
+
+```python
+obj.values
+```
+
+
+```python
+obj.index
+```
+
+```python
+obj2 = pd.Series([4, 7, -5, 3], index=['d', 'b', 'a', 'c'])
+obj2
+```
+```python
+obj2.values
+```
+
+
+```python
+obj2.index
+```
+
+#### 透過index(索引)進行搜尋
+
+```python
+obj2['a']
+```
+
+
+```python
+obj2[['c', 'a', 'd']]
+```
+#### 透過index(索引)進行設定
+
+```python
+obj2['d'] = 6
+```
+
+
+```python
+obj2[['c', 'a', 'd']]
+```
+#### 更多運算
+```python
+obj2[obj2 > 0]
+```
+
+
+```python
+obj2 * 2
+```
+
+```python
+import numpy as np
+np.exp(obj2)
+```
+
+#### 使用字典資料型態建立pandas.Series() 
+```python
+sdata = {'Ohio': 35000, 'Texas': 71000, 'Oregon':16000, 'Utah': 5000}
+
+obj3 = pd.Series(sdata)
+obj3
+```
+
+
+```python
+states = ['California', 'Ohio', 'Oregon', 'Texas']
+
+obj4 = pd.Series(sdata, index=states)
+obj4
+```
+#### 使用pandas的isnull和notnull函數檢測MISSING Value(缺失資料)
+```python
+pd.isnull(obj4)
+```
+
+
+```python
+pd.notnull(obj4)
+```
+
+```python
+obj4.isnull()
+```
+
+#### Series自動排序(Data alignment features)
+- Series自動按index label來排序
+
+
+```python
+obj3
+```
+
+```python
+obj4
+```
+
+
+```python
+obj3 + obj4
+```
+
+#### series  `name屬性`的運用
+- series自身和它的index都有一個叫name的屬性
+
+```python
+obj4.name = 'population'
+
+obj4.index.name = 'state'
+
+obj4
+```
+#### 更改 series的index
+
+```python
+obj
+obj.index = ['Bob', 'Steve', 'Jeff', 'Ryan']
+obj
+
+```
+#### 加分作業:研讀底下參考資料並完成實務演練
+
+[Pandas 資料分析實戰：使用 Python 進行高效能資料處理及分析 (Learning pandas : High-performance data manipulation and analysis in Python, 2/e) Michael Heydt ](https://www.tenlong.com.tw/products/9789864343898)
+  - [GITHUB](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition) 
+  - Chapter 3：用序列表示單變數資料
+    - 3.1 設定pandas
+    - 3.2 建立序列
+    - 3.3 .index及.values屬性
+    - 3.4 序列的大小及形狀
+    - 3.5 在序列建立時指定索引
+    - 3.6 頭、尾、選取
+    - 3.7 以索引標籤或位置提取序列值
+    - 3.8 把序列切割成子集合
+    - 3.9 利用索引標籤實現對齊
+    - 3.10 執行布林選擇
+    - 3.11 將序列重新索引
+    - 3.12 原地修改序列
+
+
+## 1_2_DataFrame的運算 see [CHAPTER 5 Getting Started with pandas](https://github.com/LearnXu/pydata-notebook/blob/master/Chapter-05/5.1%20Introduction%20to%20pandas%20Data%20Structures%EF%BC%88pandas%E7%9A%84%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%EF%BC%89.ipynb)
+- 建立DataFrame
+
+- 搜尋滿足條件的資料
+
+### (1)建立DataFrame: 使用python dict 資料型態 + dict裡的value是list 資料型態
+```python
+data = {'state': ['Ohio', 'Ohio', 'Ohio', 'Nevada', 'Nevada', 'Nevada'], 
+        'year': [2000, 2001, 2002, 2001, 2002, 2003], 
+        'pop': [1.5, 1.7, 3.6, 2.4, 2.9, 3.2]}
+
+frame = pd.DataFrame(data)
+
+frame
+```
+
+### 顯示資料的技術
+```python
+frame.head()
+```
+
+
+```python
+pd.DataFrame(data, columns=['year', 'state', 'pop'])
+```
+### missing value
+```python
+frame2 = pd.DataFrame(data, columns=['year', 'state', 'pop', 'debt'], 
+                      index=['one', 'two', 'three', 'four', 'five', 'six'])
+frame2
+
+frame2.columns
+```
+
+## 資料提取
+- 提取一column(列)
+- 提取一row(行)
+
+### 從DataFrame提取一列(底下兩種提取方法)== > 回傳給你一個series
+```python
+frame2['state']
+frame2.year
+```
+### 從DataFrame提取一row(行)
+
+```python
+frame2.loc['three']
+```
+### 資料變更(賦值)的幾種範例
+```python
+frame2['debt'] = 16.5
+frame2
+```
+
+```python
+frame2['debt'] = np.arange(6.)
+frame2
+```
+
+```python
+val = pd.Series([-1.2, -1.5, -1.7], index=['two', 'four', 'five'])
+frame2['debt'] = val
+frame2
+## 特別注意結果
+```
+
+```python
+frame2['eastern'] = frame2.state == 'Ohio'
+frame2
+```
+
+#### 刪除資料
+```python
+del frame2['eastern']
+
+frame2.columns
+```
+
+### (2)建立Data Frame的情境 == >
+```python
+pop = {'Nevada': {2001: 2.4, 2002: 2.9},
+       'Ohio': {2000: 1.5, 2001: 1.7, 2002: 3.6}}
+
+frame3 = pd.DataFrame(pop)
+frame3
+```
+
+```python
+
+```
+### (3)建立Data Frame的情境 == > 使用python dict + series
+
+```python
+pdata = {'Ohio': frame3['Ohio'][:-1],
+         'Nevada': frame3['Nevada'][:2]}
+pd.DataFrame(pdata)
+```
+
+
+```python
+frame3.index.name = 'year'; frame3.columns.name = 'state'
+frame3
+frame3.values
+frame2.values
+```
+#### 加分作業:研讀底下參考資料並完成實務演練
+- [Pandas 資料分析實戰：使用 Python 進行高效能資料處理及分析 (Learning pandas : High-performance data manipulation and analysis in Python, 2/e) Michael Heydt ](https://www.tenlong.com.tw/products/9789864343898)
+  - [GITHUB](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition) 
+  - Chapter 4：用資料框表示表格及多變數資料
+    - 4.1 設定pandas
+    - 4.2 建立資料框物件
+    - 4.3 存取資料框的資料
+    - 4.4 利用布林選擇選取列
+    - 4.5 跨越行與列進行選取
+  - Chapter 5：操控資料框結構
+    - 5.1 設定pandas
+    - 行columns的各種運算
+      - 5.2 重新命名行Renaming columns
+      - 5.3 利用[]及.insert()增加新行
+      - 5.4 利用擴展增加新行
+      - 5.5 利用串連增加新行
+      - 5.6 改變行的順序
+      - 5.7 取代行的內容
+      - 5.8 刪除行
+    - 列columns的各種運算
+      - 5.9 附加新列
+      - 5.10 列的串連
+      - 5.11 經由擴展增加及取代列
+      - 5.12 使用.drop()移除列
+      - 5.13 利用布林選擇移除列
+      - 5.14 使用切割移除列
+
+## 2_pandas資料匯入與資料清理(Data cleaning)
+- [經典:Python 資料分析, 2/e](https://www.tenlong.com.tw/products/9789864769254)
+  - [GITHUB](https://github.com/wesm/pydata-book) 
+  - [中譯](https://github.com/LearnXu/pydata-notebook/tree/master/)
+  - 第六章 資料載入、儲存和檔案格式
+  - 第七章 資料整理和前處理
+- [Pandas 資料分析實戰：使用 Python 進行高效能資料處理及分析 (Learning pandas : High-performance data manipulation and analysis in Python, 2/e) Michael Heydt ](https://www.tenlong.com.tw/products/9789864343898)
+  - [GITHUB](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition) 
+  - [Ch9](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition/blob/master/Chapter09/09_Accessing_Data.ipynb)
+  - Chapter 9：存取資料
+  - 9.2 處理CSV及文字/表格格式的資料
+  - 9.3 讀寫Excel格式資料
+  - 9.4 讀寫JSON檔案
+  - 9.5 從網站讀取HTML資料
+
+
+## 整體架構
+
+![Pandas_IO.PNG](./Pandas_IO.png)
+
+## 延伸學習
+
+- [Pandas讀寫MySQL資料庫](https://codertw.com/%E8%B3%87%E6%96%99%E5%BA%AB/16156/)
+- [使用Python從Mysql抓取每日股價資料與使用pandas進行分析](https://sites.google.com/site/zsgititit/home/python-cheng-shi-she-ji/shi-yongpython-congmysql-zhua-qu-mei-ri-gu-jia-zi-liao-yu-shi-yongpandas-jin-xing-fen-xi)
+- [如何用Pandas連接到PostgreSQL資料庫讀寫數據](https://medium.com/@phoebehuang.pcs04g/use-pandas-link-to-postgresql-6cfc24a930f1)
+
+## 1_讀寫CSV檔案 
+- see 9.2 處理CSV及文字/表格格式的資料 
+- [pandas.read_table](https://pandas.pydata.org/docs/reference/api/pandas.read_table.html)
+- 讀取CSV [pandas.read_csv()](https://pandas.pydata.org/docs/reference/api/pandas.read_csv.html)
+  - 熟悉各種讀取參數用法  [pandas.read_csv参数详解](https://www.cnblogs.com/datablog/p/6127000.html)
+  - index_col:指定使用某欄位當作索引
+  - nrows：僅讀取⼀定的⾏數
+  - skiprows：跳過⼀定的⾏數
+  - skipfooter：尾部有固定的⾏數永不讀取
+  - skip_blank_lines：空⾏跳過
+- 寫入CSV [pandas.DataFrame.to_csv()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas-dataframe-to-csv)
+
+#### 先下載遠端資料到Google Colab 
+```
+!wget https://raw.githubusercontent.com/PacktPublishing/Learning-Pandas-Second-Edition/master/data/msft.csv
+```
+#### 檢視資料
+```
+!head -n 5 msft.csv 
+```
+#### Reading a CSV into a DataFrame
+```
+msft = pd.read_csv("./msft.csv")
+msft[:5]
+```
+
+#### Specifying the index column when reading a CSV file
+```python
+# use column 0 as the index
+msft = pd.read_csv("./msft.csv", index_col=0)
+msft[:5]
+```
+
+```python
+df3 = pd.read_csv("./msft.csv", usecols=['Date', 'Close'])
+df3[:5]
+```
+#### 寫入CSV Saving a DataFrame to a CSV ==> [pandas.DataFrame.to_csv()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_csv.html#pandas-dataframe-to-csv)
+```PYTHON
+# read in data only in the Date and Close columns
+# and index by the Date column
+df2 = pd.read_csv("./msft.csv", 
+                  usecols=['Date', 'Close'], 
+                  index_col=['Date'])
+df2[:5]
+```
+```python
+# save df2 to a new csv file
+# also specify naming the index as date
+df2.to_csv("./msft_A999168.csv", index_label='date')
+```
+```
+# view the start of the file just saved
+!head -n 5 ./msft_A999168.csv
+```
+
+### 各式csv的讀取 
+- 去除頭部說明文字
+- 去除底部說明文字
+- 讀取部分欄位
+- 讀取部分資料
+  - [參考程式 GITHUB](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition) 
+
+### 2_讀寫excel檔案 Reading and writing data in Excel format
+- [下載excel檔案](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition/blob/master/data/stocks.xlsx)
+- 再upload到Google Colab
+- xlsx vs xls 檔案差異
+- 讀取excel [pandas.read_excel()](https://pandas.pydata.org/docs/reference/api/pandas.read_excel.html)
+  - 熟悉各種讀取參數用法  
+  - [(最新Pandas.read_excel()全参数详解（案例实操，如何利用python导入excel）)](https://zhuanlan.zhihu.com/p/142972462)
+  - [[Pandas教學]5個實用的Pandas讀取Excel檔案資料技巧](https://www.learncodewithmike.com/2020/12/read-excel-file-using-pandas.html)
+  - [Python pandas.ExcelWriter用法及代碼示例](https://vimsky.com/zh-tw/examples/usage/python-pandas.ExcelWriter.html)
+
+- 寫入excel [pandas.DataFrame.to_excel()](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_excel.html)
+  - [Python pandas.DataFrame.to_excel用法及代碼示例](https://vimsky.com/zh-tw/examples/usage/python-pandas.DataFrame.to_excel.html)
+
+#### 讀取excel檔
+```python
+df = pd.read_excel("./stocks.xlsx")
+df[:5]
+```
+
+### 讀取不同試算表
+```python
+# read from the aapl worksheet
+aapl = pd.read_excel("./stocks.xlsx", sheet_name='aapl')
+aapl[:5]
+```
+
+#### 寫入到excel檔
+```python
+# save to an .XLS file, in worksheet 'Sheet1'
+df.to_excel("./stocks2.xls")
+```
+
+
+### 3_讀寫 JSON 檔案
+- [JSON](https://zh.wikipedia.org/wiki/JSON)
+- XML vs JSON
+- Reading and writing JSON files
+- 範例來源:https://github.com/PacktPublishing/Pandas-Cookbook-Second-Edition/blob/master/Chapter03/c3-code.ipynb
+```python
+
+# 建立DataFrame 
+fname = ['Paul', 'John', 'Richard', 'George']
+lname = ['McCartney', 'Lennon', 'Starkey', 'Harrison']
+birth = [1942, 1940, 1940, 1943]
+people = {'first': fname, 'last': lname, 'birth': birth}
+beatles = pd.DataFrame(people)
+
+# 編碼成json格式
+import json
+encoded = json.dumps(people)
+encoded
+
+# 使用loads()載入 json檔 == > 回傳一個dict
+json.loads(encoded)
+
+# 使用read_json()讀取 json檔
+beatles = pd.read_json(encoded)
+beatles
+
+# 使用to_json()加上orient參數輸出不同格式的 json檔
+# orient參數 == > 設定不同輸出格式
+# orient='records'
+# orient='split'
+# orient='index'
+# orient='values'
+# orient='table'
+# 請驗證其資料讀取時呈現的結果
+
+records = beatles.to_json(orient='records')
+records
+pd.read_json(records,orient='records)
+
+```
+- [pandas.read_json](https://pandas.pydata.org/docs/reference/api/pandas.read_json.html#pandas-read-json)
+- [pandas.DataFrame.to_json](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_json.html)
+
+### 4_讀取網頁表格資料 
+- [pandas.read_html()](https://pandas.pydata.org/docs/reference/api/pandas.read_html.html)
+  - [[Pandas教學]掌握Pandas DataFrame讀取網頁表格的實作技巧](https://www.learncodewithmike.com/2020/11/read-html-table-using-pandas.html)  
+- [pandas.DataFrame.to_html](https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.to_html.html)
+  - [[Pandas教學]利用Pandas套件的to_html方法在網頁快速顯示資料分析結果](https://www.learncodewithmike.com/2021/07/pandas-to-html.html) 
+```python
+url ='https://en.wikipedia.org/wiki/The_Beatles_discography'
+dfs = pd.read_html(url)
+len(dfs)
+dfs[0]
+dfs[1]
+```
+
+## 5_存取資料庫資料
+- 使用SQLite3
+- 先下載[stocks.sqlite](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition/blob/master/data/stocks.sqlite)並上傳到colab 
+- 或是先執行 !wget https://github.com/PacktPublishing/Learning-Pandas-Second-Edition/blob/master/data/stocks.sqlite?raw=true
+```
+# reference SQLite
+import sqlite3
+
+# read in the stock data from CSV
+msft = pd.read_csv("https://raw.githubusercontent.com/PacktPublishing/Learning-Pandas-Second-Edition/master/data/msft.csv")
+msft["Symbol"]="MSFT"
+aapl = pd.read_csv("https://raw.githubusercontent.com/PacktPublishing/Learning-Pandas-Second-Edition/master/data/aapl.csv")
+aapl["Symbol"]="AAPL"
+
+# create connection
+connection = sqlite3.connect("data/stocks.sqlite")
+# .to_sql() will create SQL to store the DataFrame
+# in the specified table.  if_exists specifies
+# what to do if the table already exists
+msft.to_sql("STOCK_DATA", connection, if_exists="replace")
+aapl.to_sql("STOCK_DATA", connection, if_exists="append")
+
+# commit the SQL and close the connection
+connection.commit()
+connection.close()
+```
+- 連線到資料庫並執行SQL查詢
+```
+# connect to the database file
+connection = sqlite3.connect("./stocks.sqlite")
+
+# query all records in STOCK_DATA
+# returns a DataFrame
+# inde_col specifies which column to make the DataFrame index
+stocks = pd.io.sql.read_sql("SELECT * FROM STOCK_DATA;", 
+                             connection, index_col='index')
+
+# close the connection
+connection.close()
+
+# report the head of the data retrieved
+stocks[:5]
+```
+## 2_3_資料處理_連接_合併和重塑
+- [經典:Python 資料分析, 2/e](https://www.tenlong.com.tw/products/9789864769254)
+  - [GITHUB](https://github.com/wesm/pydata-book) 
+  - [中譯](https://github.com/LearnXu/pydata-notebook/tree/master/)
+  - 第八章 資料處理：連接、合併和重塑
+- [Pandas 資料分析實戰：使用 Python 進行高效能資料處理及分析 (Learning pandas : High-performance data manipulation and analysis in Python, 2/e) Michael Heydt ](https://www.tenlong.com.tw/products/9789864343898)
+  - [GITHUB](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition) 
+  - Chapter 11：結合、關聯以及重塑資料
+    - 11.1 設定pandas
+    - 11.2 串連幾個物件的資料
+    - 11.3 合併與連結資料
+    - 11.4 資料值與索引的樞紐操作
+    - 11.5 堆疊(Stack)與解堆疊(UnStack)
+    - 11.6 堆疊資料帶來的效能好處
+
+# Combining and Merging Datasets（合併資料集）
+- join：連接
+- combine：合併
+- reshape：整形
+- merge：歸併
+- concatenate：串聯
+- pivot：旋轉
+- stack：堆疊
+
+## concatenate：串聯
+```python
+df1 = pd.DataFrame(np.arange(9).reshape(3, 3), columns=['a', 'b', 'c'])
+df2 = pd.DataFrame(np.arange(9, 18).reshape(3, 3),  columns=['a', 'b', 'c'])
+pd.concat([df1, df2])
+```
+```python
+df3 = pd.DataFrame(np.arange(9).reshape(3, 3), columns=['a', 'b', 'c'])
+df4 = pd.DataFrame(np.arange(9, 18).reshape(3, 3), columns=['a', 'c', 'd'])
+pd.concat([df3, df4])
+```
+## merge (資料庫風格的DataFrame Joins)
+```python
+import numpy as np
+import pandas as pd
+
+import datetime
+from datetime import datetime, date
+
+
+customers = {'CustomerID': [10, 11],
+             'Name': ['Mike', 'Marcia'],
+             'Address': ['Address for Mike',
+                         'Address for Marcia']}
+customers = pd.DataFrame(customers)
+
+orders = {'CustomerID': [10, 11, 10],
+          'OrderDate': [date(2014, 12, 1),
+                        date(2014, 12, 1),
+                        date(2014, 12, 1)]}
+orders = pd.DataFrame(orders)
+
+customers.merge(orders)
+```
+
+## Pivoting 運算
+```
+!wget https://raw.githubusercontent.com/PacktPublishing/Learning-Pandas-Second-Edition/master/data/accel.csv
+
+sensor_readings = pd.read_csv("./accel.csv")
+sensor_readings[sensor_readings['axis'] == 'X']
+sensor_readings.pivot(index='interval', columns='axis', values='reading')
+```
+## 堆疊(Stack)與解堆疊(UnStack)運算
+```python
+df = pd.DataFrame({'aaa': [11, 22]}, index={'one', 'two'})
+stacked1 = df.stack()  #堆疊(Stack)運算
+stacked1  # df和堆疊(Stack)後的stacked1有何差異?
+```
+```python
+df2 = pd.DataFrame({'aa': [11, 22],
+                   'bb': [33, 44]}, 
+                  index={'one', 'two'})
+stacked2 = df2.stack()
+stacked2
+```
+## 2_4_資料聚合和分組
+- [經典:Python 資料分析, 2/e](https://www.tenlong.com.tw/products/9789864769254)
+  - [GITHUB](https://github.com/wesm/pydata-book) [中譯](https://github.com/LearnXu/pydata-notebook/tree/master/)
+  - 第十章 資料聚合和分組
+- [Pandas 資料分析實戰：使用 Python 進行高效能資料處理及分析 (Learning pandas : High-performance data manipulation and analysis in Python, 2/e) Michael Heydt ](https://www.tenlong.com.tw/products/9789864343898)
+  - [GITHUB](https://github.com/PacktPublishing/Learning-Pandas-Second-Edition) 
+  - Chapter 12：資料聚合
+    - split-apply-combine(分割-應用-結合)模式
+    - 套用聚合函數、轉換以及過濾
+    - 轉換分組資料
+    - 過濾分組資料
+ 
+ ## Data Aggregation and Group Operations資料匯總和組操作常見運算
+ - 把一個pandas物件（series或DataFrame）按key分解為多個
+ - 計算群組的匯總統計值（group summary statistics），比如計數，平均值，標準差，或使用者自己定義的函數
+ - 應用組內的轉換或其他一些操作，比如標準化，線性回歸，排序，子集選擇
+ - 計算透視表和交叉列表
+ - 進行分位數分析和其他一些統計分析
+ 
+ ## group operation(group操作)為split-apply-combine(分割-應用-結合)
+ - Hadley Wickham是很多R語言有名函數庫的作者，他描述group operation(組操作)為split-apply-combine(分割-應用-結合)。
+ - 第一個階段，存儲於series或DataFrame中的資料，根據不同的keys會被split(分割)為多個組。而且分割的操作是在一個特定的axis(軸)上。
+   - 例如，DataFrame能按行（axis=0）或列（axis=1）來分組。
+ - 第二個階段:把函數apply(應用)在每一個組上，產生一個新的值。
+ - 第三個階段:函數產生的結果被combine(結合)為一個結果物件(result object)
+ 
+ ## groupby()運算
+ ```python
+import numpy as np
+import pandas as pd
+df = pd.DataFrame({'key1' : ['a', 'a', 'b', 'b', 'a'],
+                   'key2' : ['one', 'two', 'one', 'two', 'one'], 
+                   'data1' : np.random.randn(5), 
+                   'data2' : np.random.randn(5)})
+ ```
+ - 使用key1作為labels，來計算data1列的平均值 
+ ```python
+ grouped = df['data1'].groupby(df['key1'])
+ grouped 
+ ```
+- grouped變數是一個GroupBy object(分組物件)。
+- 實際上現在還沒有進行任何計算，除了調用group key(分組鍵)df['key1']時產生的一些中間資料。
+- 這個GroupBy object(分組物件)已經有了我們想要的資訊，現在需要的是對於每一個group（組）進行一些操作
+ 
+ ```python
+ grouped.mean()
+ grouped.describe()
+ ```
+ 
+ ```python
+means = df['data1'].groupby([df['key1'], df['key2']]).mean()
+means
+ ```
+- size():group size(組別的個數(大小))
+```
+df.groupby(['key1', 'key2']).size()
+```
+
+## 使用Dicts進行groupby分組運算
+```python
+people = pd.DataFrame(np.random.randn(5, 5),
+                      columns=['a', 'b', 'c', 'd', 'e'],
+                      index=['Joe', 'Steve', 'Wes', 'Jim', 'Travis'])
+people.iloc[2:3, [1, 2]] = np.nan # 改變部分資料
+
+# 將column重新規範內容以便進行後續運算
+mapping = {'a': 'red', 'b': 'red', 'c': 'blue',
+           'd': 'blue', 'e': 'red', 'f': 'orange'}
+
+# 重新定義
+by_column = people.groupby(mapping, axis=1)
+
+# 執行sum總和運算
+by_column.sum()
+```
+
+## Grouping with Functions使用函數來進行分組
+```python
+people.groupby(len).sum()
+```
