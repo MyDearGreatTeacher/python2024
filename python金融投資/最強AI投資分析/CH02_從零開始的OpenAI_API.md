@@ -1,7 +1,5 @@
 # CH02_從零開始的OpenAI_API
 
-# CH-02 從零開始的 OpenAI API
-
 ## 2-3 建構自己的 AI 機器人
 
 ### 1️⃣ 使用 OpenAI API 官方套件
