@@ -12,7 +12,14 @@
   - 有了這個結構樹之後，就可以輕鬆找出任何有興趣的資料了。
 
 # 參考資料
-- [Python 使用 Beautiful Soup 抓取與解析網頁資料，開發網路爬蟲教學](https://blog.gtwang.org/programming/python-beautiful-soup-module-scrape-web-pages-tutorial/)
+- [Python爬蟲使用Beautiful Soup](https://hackmd.io/@aaronlife/python-topic-beautifulsoup)
+- https://steam.oxxostudio.tw/category/python/spider/beautiful-soup.html
+- Udemy[Web Scraping in Python With BeautifulSoup and Selenium](https://www.udemy.com/course/web-scraping-in-python-with-beautifulsoup-and-selenium/?utm_source=adwords&utm_medium=udemyads&utm_campaign=Search_DSA_Alpha_Prof_la.EN_cc.ROW-English&campaigntype=Search&portfolio=ROW-English&language=EN&product=Course&test=&audience=DSA&topic=Data_Science&priority=Alpha&utm_content=deal4584&utm_term=_._ag_162511579084_._ad_696197165271_._kw__._de_c_._dm__._pl__._ti_aud-2268488108799%3Adsa-1677974310676_._li_9199124_._pd__._&matchtype=&gad_source=1&gclid=CjwKCAiA6aW6BhBqEiwA6KzDczt9CJ7zH87vuKxdNLn6IABrdKNXRtW5owSv2H_wjWmYY67px50N0xoCUyEQAvD_BwE&couponCode=BFCPSALE24)
+- [LINE BOT 新手村30日攻略](https://ithelp.ithome.com.tw/users/20122649/ironman/3122)
+  - [【Day 09】- 大家都愛的 BeautifulSoup](https://ithelp.ithome.com.tw/articles/10271319)
+  - [Day19 Python 爬蟲 Beautiful Soup](https://ithelp.ithome.com.tw/articles/10249042)
+  - [Day20 Python 爬蟲 Selenium](https://ithelp.ithome.com.tw/articles/10249582)
+### 範例說明 [Python 使用 Beautiful Soup 抓取與解析網頁資料，開發網路爬蟲教學](https://blog.gtwang.org/programming/python-beautiful-soup-module-scrape-web-pages-tutorial/)
 
 ```python
 # 引入 Beautiful Soup 模組
