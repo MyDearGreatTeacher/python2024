@@ -4,8 +4,12 @@
 - Beautiful Soup 這套模組的網頁結構搜尋與萃取功能相當完整
 - 我們只介紹比較常用的幾種功能，更詳細的用法請參考
 - Beautiful Soup 官方的說明文件
+  - https://www.crummy.com/software/BeautifulSoup/bs4/doc/
   - https://www.crummy.com/software/BeautifulSoup/bs4/doc.zh/ 
-- Beautiful Soup 的運作方式就是讀取 HTML 原始碼，自動進行解析並產生一個 BeautifulSoup 物件，此物件中包含了整個 HTML 文件的結構樹，有了這個結構樹之後，就可以輕鬆找出任何有興趣的資料了。
+- Beautiful Soup 的運作方式
+  - 讀取 HTML 原始碼，自動進行解析並產生一個 BeautifulSoup 物件
+  - 此物件中包含了整個 HTML 文件的結構樹
+  - 有了這個結構樹之後，就可以輕鬆找出任何有興趣的資料了。
 
 # 參考資料
 - [Python 使用 Beautiful Soup 抓取與解析網頁資料，開發網路爬蟲教學](https://blog.gtwang.org/programming/python-beautiful-soup-module-scrape-web-pages-tutorial/)
