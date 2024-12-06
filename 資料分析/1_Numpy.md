@@ -123,6 +123,9 @@ import numpy as np
 ar12 = np.linspace(1., 4., 6) # start, end, num
 ar12
 ```
+- [numpy.linspace](https://github.com/MyDearGreatTeacher/python2024/blob/main/%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90/1_Numpy.md)
+- numpy.linspace(start, stop, num=50, endpoint=True, retstep=False, dtype=None, axis=0, *, device=None)[source]
+
 ### 作業:建立「不限定元素值」的陣列 – empty()
 
 ### 建立指定範圍的等差陣列 – arange()
