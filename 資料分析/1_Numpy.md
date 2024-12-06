@@ -200,7 +200,7 @@ np.tile(np.array([[1,2],[6,7]]),(2,2))
 ### 使用索引存取陣列 Array Indexing(索引)1: Accessing  Elements
 ```python
 
-Import numpy as np
+import numpy as np
 x = np.arange(2,10)
 x
 ```
