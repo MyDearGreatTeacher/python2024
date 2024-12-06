@@ -386,3 +386,26 @@ arr5 = np.ceil([-3.1666, 3.6667])
 print(arr1)
 ```
 - 更多範例 請參閱 [官方說明Universal functions (ufunc)](https://numpy.org/doc/stable/reference/ufuncs.html)
+
+
+# 萬事萬物皆陣列
+```python
+from PIL import Image
+from numpy import asarray
+# load the image
+image = Image.open('kolala.jpeg')
+# convert image to numpy array
+data = asarray(image)
+print(type(data))
+# summarize shape
+print(data.shape)
+```
+```python
+# create Pillow image
+image2 = Image.fromarray(data)
+print(type(image2))
+
+# summarize image details
+print(image2.mode)
+print(image2.size)
+```
