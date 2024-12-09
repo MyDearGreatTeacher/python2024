@@ -1,8 +1,6 @@
 # yfinance模組技巧
 - [yfinance GitHub原始碼](https://github.com/ranaroussi/yfinance)
 - [yfinance 攻略！Python 下載股票價格數據無難度](https://pythonviz.com/finance/yfinance-download-stock-data/)
- 
-
 
 ## 實作
 - [元大台灣50 (0050.TW)](https://hk.finance.yahoo.com/quote/0050.TW?p=0050.TW&.tsrc=fin-srch)
